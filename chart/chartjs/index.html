@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="lt-ie10" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>twentytwenty</title>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<link href="css/foundation.css" rel="stylesheet" type="text/css" />
+
+<script src="js/Chart.min.js"></script>
+<script src="js/utils.js"></script>
+
+</head>
+<body>
+  <div class="row" style="margin-top: 2em;">
+
+    <div class="large-6 columns">
+      <canvas id="canvas1"></canvas>
+    </div>
+    <div class="large-6 columns">
+      <canvas id="canvas2"></canvas>
+    </div>
+
+  </div>
+  <script>
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var color = Chart.helpers.color;
+  var data  = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [{
+        label: 'Dataset 1',
+        backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.red,
+        borderWidth: 1,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ]
+      }, {
+        label: 'Dataset 2',
+        backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.blue,
+        borderWidth: 1,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ]
+      }]
+  };
+
+  $(function(){
+    window.myBar = new Chart(document.getElementById('canvas1').getContext('2d'), {
+      type: 'bar',
+      data: data,
+      options: {
+        responsive: true,
+      }
+    });
+
+    window.myHorizontalBar = new Chart(document.getElementById('canvas2').getContext('2d'), {
+      type: 'horizontalBar',
+      data: data,
+      options: {
+        responsive: true,
+      }
+    });
+
+  });
+  </script>
+</body>
+</html>
