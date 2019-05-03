@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="lt-ie10" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>twentytwenty</title>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+<link href="css/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/twentytwenty.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.event.move.js"></script>
+<script src="js/jquery.twentytwenty.js"></script>
+
+<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+<link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+
+<!--
+<link href="css/imgslider.min.css" rel="stylesheet" type="text/css" />
+<script src="js/imgslider.min.js"></script>
+
+<script src="js/cocoen.min.js"></script>
+<script src="js/cocoen-jquery.min.js"></script>
+<link rel="stylesheet" href="css/cocoen.min.css" />
+-->
+
+</head>
+<body>
+  <div class="row" style="margin-top: 2em;">
+
+    <div class="large-4 columns">
+      <h3>Twentytwenty</h3>
+    </div>
+    <div class="large-8 columns">
+      <div class="twentytwenty-container">
+        <img src="img/a.jpg" />
+        <img src="img/b.jpg" />
+      </div>
+    </div>
+
+    <div class="large-4 columns">
+      <h3>Juxtapose</h3>
+    </div>
+    <div class="large-8 columns">
+      <div class="juxtapose-container"></div>
+    </div>
+
+<!--
+    <div class="large-4 columns">
+      <h3>imgSlier</h3>
+    </div>
+    <div class="large-8 columns">
+      <div class="slider responsive">
+        <div class="left image"><img src="img/a.jpg"/></div>
+        <div class="right image"><img src="img/b.jpg"/></div>
+      </div>
+    </div>
+
+    <div class="large-4 columns">
+      <h3>Cocoen</h3>
+    </div>
+    <div class="large-8 columns">
+      <div class="cocoen-container">
+        <img src="img/a.jpg"/>
+        <img src="img/b.jpg"/>
+      </div>
+    </div>
+-->
+
+  </div>
+  <script>
+  $(function(){
+    $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+    $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+    
+    slider = new juxtapose.JXSlider('.juxtapose-container', [
+        {
+            src: 'img/a.jpg',
+            //label: '2009',
+            //credit: 'Image Credit'
+        },
+        {
+            src: 'img/b.jpg',
+            //label: '2014',
+            //credit: "Image Credit"
+        }
+    ],
+    {
+        animate: true,
+        showLabels: true,
+        showCredits: true,
+        startingPosition: "70%",
+        makeResponsive: true
+    });
+  });
+
+  //$('.slider').slider();
+  //$('.cocoen-container').cocoen();
+  </script>
+</body>
+</html>
